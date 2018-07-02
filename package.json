@@ -1,0 +1,10 @@
+{
+  "name": "canvas-minions-login",
+  "version": "1.0.0",
+  "description": "A intersting login html use canvas~ ",
+  "main": "index.html",
+  "repository": "https://github.com/luffyZh/canvas-minions-login.git",
+  "author": "luffyZhou",
+  "license": "MIT",
+  "homepage": "https://luffyzh.github.io/canvas-minions-login/"
+}
