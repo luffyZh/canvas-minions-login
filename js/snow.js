@@ -86,21 +86,22 @@
 
     if (ticker > tickCount) {
       snows.push(
-        new Snow(Math.random() * W, 0, Math.random() * 10 + 5)
+        new Snow(Math.random() * W, 0, Math.random() * 15 + 5)
       );
       ticker %= tickCount;
     }
 
     const length = snows.length;
     snows.map(function (s, i) {
-      
+      s.update();
+      s.draw();
       // 在这里做雪花停止的效果
-      if (s.y <= (H/2 + 10) && s.y >= (H/2 - 10)) {
-        s.draw();
-      } else {
-        s.update();
-        s.draw();
-      }
+      // if (s.y <= (H/2 + 10) && s.y >= (H/2 - 10)) {
+      //   s.draw();
+      // } else {
+      //   s.update();
+      //   s.draw();
+      // }
       if (s.y >= H) {
         snows.splice(i, 1);
       }
