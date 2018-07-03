@@ -24,16 +24,26 @@
 
   let snowImage = null;
 
+  /**
+   * 雪花对象
+   * @param {x} x 
+   * @param {y} y 
+   * @param {半径} radius 
+   */
   function Snow(x, y, radius) {
     this.x = x;
     this.y = y;
-    this.sx = 0;
-    this.sy = 0;
-    this.deg = 0;
     this.radius = radius;
+    // x方向的移动速度，可以向左也可以向右，范围在[-1, 1]
+    this.sx = 0;
+    // y方向的移动速度,只能向下，最快为1
+    this.sy = 0;
+    // 雪花目前的角度
+    this.deg = 0;
+    // x方向，下落速度参数，飘落效果 > 0向左飘； < 0 向右飘 
     this.ax = Math.random() < 0.5 ? 0.005 : -0.005;
   }
-
+  // 更新雪花位置
   Snow.prototype.update = function () {
     const deltaDeg = Math.random() * 0.6 + 0.2;
 
@@ -43,14 +53,14 @@
     }
 
     if (this.sy < SPEED_LIMIT_Y) {
-      this.sy += G;
+      this.sy += G;  // 雪花下落速度，最高是1
     }
 
     this.deg += deltaDeg;
     this.x += this.sx;
     this.y += this.sy;
   }
-
+  // 绘制雪花
   Snow.prototype.draw = function () {
     const radius = this.radius;
     ctx.save();
