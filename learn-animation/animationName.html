@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' type='text/css' href="./style.css" />
+  <title>compare</title>
+  <style>
+    .move-right {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      background-color: greenyellow;
+      animation: move-right-animate 4s linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes move-right-animate {
+      from {
+        left: 0;
+      }
+      
+      to {
+        left: calc((var(--windowWidth) - 40) * 1px);
+      }
+    }
+    .move-down {
+      position: absolute;
+      top: 0;
+      left: calc((var(--windowWidth) - 40) * 1px);
+      width: 40px;
+      height: 40px;
+      background-color: blue;
+      animation: move-down-animate 4s linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes move-down-animate {
+      from {
+        top: 0;
+      }
+      
+      to {
+        top: calc((var(--windowHeight) - 40) * 1px);
+      }
+    }
+
+    .move-left {
+      position: absolute;
+      top: calc((var(--windowHeight) - 40) * 1px);
+      left: calc((var(--windowWidth) - 40) * 1px);
+      width: 40px;
+      height: 40px;
+      background-color: orange;
+      animation: move-left-animate 4s linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes move-left-animate {
+      from {
+        left: calc((var(--windowWidth) - 40) * 1px);
+      }
+      
+      to {
+        left: 0;
+      }
+    }
+
+    .move-up {
+      position: absolute;
+      top: calc((var(--windowHeight) - 40) * 1px);
+      left: 0;
+      width: 40px;
+      height: 40px;
+      background-color: tomato;
+      animation: move-up-animate 4s linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes move-up-animate {
+      from {
+        top: calc((var(--windowHeight) - 40) * 1px);
+      }
+      
+      to {
+        top: 0;
+      }
+    }
+    
+
+  </style>
+</head>
+<body>
+  <div id='element' class="move-right"></div>
+</body>
+<script>
+  document.body.style.setProperty('--windowHeight', window.innerHeight);
+  document.body.style.setProperty('--windowWidth', window.innerWidth);
+  window.addEventListener("webkitAnimationEnd", function(e) {
+    console.log(e.animationName);
+    const { animationName } = e;
+    if (animationName === 'move-right-animate') {
+      document.getElementById('element').className = 'move-down';
+    } 
+    if (animationName === 'move-down-animate') {
+      document.getElementById('element').className = 'move-left';
+    } 
+    if (animationName === 'move-left-animate') {
+      document.getElementById('element').className = 'move-up';
+    } 
+    if (animationName === 'move-up-animate'){
+      document.getElementById('element').className = 'move-right';
+    }
+  });
+</script>
+</html>

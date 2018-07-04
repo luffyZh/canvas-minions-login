@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' type='text/css' href="./style.css" />
+  <title>compare</title>
+  <style>
+    .move {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      background-color: greenyellow;
+      animation: move-animate 16s linear infinite;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes move-animate {
+      0% {
+        top: 0;
+        left: 0;
+      }
+      30% {
+        background-color: blue;
+        top: 0;
+        left: calc((var(--windowWidth) - 40) * 1px);
+      }
+      50% {
+        background-color: orange;
+        top: calc((var(--windowHeight) - 40) * 1px);
+        left: calc((var(--windowWidth) - 40) * 1px);
+      }
+      80% {
+        background-color: tomato;
+        top: calc((var(--windowHeight) - 40) * 1px);
+        left: 0;
+      }
+      100% {
+        top: 0;
+        left: 0;
+      }
+    }
+    
+
+  </style>
+</head>
+<body>
+  <div id='element' class="move"></div>
+</body>
+<script>
+  document.body.style.setProperty('--windowHeight', window.innerHeight);
+  document.body.style.setProperty('--windowWidth', window.innerWidth);
+</script>
+</html>

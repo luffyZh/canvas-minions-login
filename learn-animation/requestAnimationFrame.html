@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' type='text/css' href="./style.css" />
+  <title>requestAnimationFrame</title>
+</head>
+<body>
+  <div id='element' style="width: 40px;height: 40px;background-color: greenyellow"></div>
+</body>
+<script>
+  var animateId = null;
+  var start = null;
+  var direction = '';
+  var element = document.getElementById('element');
+  element.style.position = 'absolute';
+  // 向下滑动
+  function stepDown(timestamp) {
+    element.style.backgroundColor = 'blue';
+    if (direction !== 'down') {
+      start = timestamp - 60;
+    }
+    direction = 'down';
+    var progress = timestamp - start;
+    element.style.top = (progress / 10) + 'px';
+    if ((progress / 10) < window.innerHeight - 42) {
+      window.requestAnimationFrame(stepDown);
+    } else {
+      window.requestAnimationFrame(stepLeft);
+    }
+  }
+  // 向左滑动
+  function stepLeft(timestamp) {
+    element.style.backgroundColor = 'orange';
+    if (direction !== 'left') {
+      start = timestamp - 60;
+      element.style.right = '0px';
+      element.style.left = "";
+    }
+    direction = 'left';
+    var progress = timestamp - start;
+    element.style.right =  (progress / 10) + 'px';
+    if ((progress / 10) < window.innerWidth - 42) {
+      window.requestAnimationFrame(stepLeft);
+    } else {
+      window.requestAnimationFrame(stepUp);
+    }
+  }
+   // 向上滑动
+   function stepUp(timestamp) {
+    element.style.backgroundColor = 'tomato';
+    if (direction !== 'up') {
+      start = timestamp - 60;
+      element.style.bottom = '0px';
+      element.style.top = "";
+    }
+    direction = 'up';
+    var progress = timestamp - start;
+    element.style.bottom = (progress / 10) + 'px';
+    if ((progress / 10) < window.innerHeight - 42) {
+      window.requestAnimationFrame(stepUp);
+    } else {
+      start = null;
+      element.style.bottom = "";
+      element.style.top = '0px';
+      // window.cancelAnimationFrame(animateId);
+      window.requestAnimationFrame(stepRight);
+    }
+  }
+  // 向右滑动
+  function stepRight(timestamp) {
+    if (!start) {
+      start = timestamp;
+    } else {
+      direction = 'right';
+    }
+    var progress = timestamp - start;
+    element.style.left = (progress / 10) + 'px';
+    if ((progress / 10) < window.innerWidth - 42) {
+      window.requestAnimationFrame(stepRight);
+    } else {
+      window.requestAnimationFrame(stepDown);
+    }
+  }
+
+  animateId = window.requestAnimationFrame(stepRight);
+</script>
+</html>
