@@ -465,3 +465,17 @@ body {
       -webkit-transform: rotate(-10deg);
   }
 }
+
+/* form部分 */
+.form-container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 220px;
+  background-color: #fafafa;
+  border-radius: 6px;
+  border: 1px solid #ddd; 
+  z-index: 9;
+}

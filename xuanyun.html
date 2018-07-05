@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .circle-container {
+      position: relative;
+      width: 45px;
+      height: 45px;
+      transform: rotate(180deg);
+    }
+    .one-circle {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      background-color: #fff;
+      border-left: 3px solid #333;
+      border-top: 3px solid #333; 
+      border-radius: 50%; 
+    }
+    .two-circle {
+      position: absolute;
+      top: 9px;
+      width: 34px;
+      height: 34px;
+      background-color: #fff;
+      border-right: 3px solid #333;
+      border-bottom: 3px solid #333; 
+      border-radius: 50%; 
+    }
+    .three-circle {
+      position: absolute;
+      bottom: 10px;
+      left: 8px;
+      width: 23px;
+      height: 23px;
+      background-color: #fff;
+      border-top: 3px solid #333;
+      border-left: 3px solid #333; 
+      border-radius: 50%; 
+    }
+    .four-circle {
+      position: absolute;
+      bottom: 0px;
+      right: 6px;
+      width: 13px;
+      height: 13px;
+      background-color: #fff;
+      border-bottom: 3px solid #333;
+      border-right: 3px solid #333; 
+      border-radius: 50%; 
+    }
+  </style>
+</head>
+<body>
+  <div class='circle-container'>
+    <div class="one-circle">
+      <div class="two-circle">
+        <div class="three-circle">
+          <div class="four-circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
