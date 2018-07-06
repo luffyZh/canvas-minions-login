@@ -11,8 +11,20 @@
 
 <body>
   <div class="wrapper">
+    <!-- 锤子 -->
+    <div id="lighting" class="hammer-container">
+      <img src="./img/lightning.png" alt="闪电" />
+    </div>
+    <div id="hammer" class="hammer-container">
+      <img src="./img/hammer.png" alt="锤子" />
+    </div>
+    <!-- 表单 -->
     <div class="form-container">
-
+      <div class="input-container">
+        <input id="username" type="text" class="form-input" placeholder="请输入用户名" onfocus="usernameFocus()" />
+        <input id="password" type="password" class="form-input" placeholder="请输入密码" onfocus="passwordFocus()" onblur="passwordBlur()" />
+      </div>
+      <button class="button button-primary button-ghost">登录</button>
     </div>
     <!-- 容器 -->
     <div class="littleH">
@@ -43,14 +55,34 @@
         <div class="eyes">
           <!-- 眼睛 -->
           <div class="leftEye">
+            <!-- 左眼眩晕 -->
+            <div class='circle-left-container xuanyun-eye' style="display: none">
+                <div class="one-circle">
+                  <div class="two-circle">
+                    <div class="three-circle">
+                      <div class="four-circle"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <!-- 左眼 -->
-            <div class="left_blackEye">
+            <div class="left_blackEye normal-eye">
               <div class="left_white"></div>
             </div>
           </div>
           <div class="rightEye">
+            <!-- 右眼眩晕 -->
+            <div class='circle-right-container xuanyun-eye' style="display: none">
+                <div class="one-circle">
+                  <div class="two-circle">
+                    <div class="three-circle">
+                      <div class="four-circle"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <!-- 右眼 -->
-            <div class="right_blackEye">
+            <div class="right_blackEye normal-eye">
               <div class="right_white"></div>
             </div>
           </div>
@@ -75,5 +107,25 @@
     </div>
   </div>
 </body>
-
+<script>
+  function usernameFocus() {
+    console.log('username get focus');
+  }
+  function passwordFocus() {
+    console.log('password get focus');
+    document.getElementById('lighting').className = 'lighting-animation';
+    document.getElementById('hammer').className = 'hammer-animation';
+    Array.from(document.getElementsByClassName('normal-eye')).forEach(element => {
+      element.style.display = 'none';
+    });
+    Array.from(document.getElementsByClassName('xuanyun-eye')).forEach(element => {
+      element.style.display = 'block';
+    })
+  }
+  function passwordBlur() {
+    console.log('password blur');
+    document.getElementById('lighting').className = 'hammer-container';
+    document.getElementById('hammer').className = 'hammer-container';
+  }
+</script>
 </html>
