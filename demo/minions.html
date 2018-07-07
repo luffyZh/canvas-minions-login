@@ -120,12 +120,18 @@
     });
     Array.from(document.getElementsByClassName('xuanyun-eye')).forEach(element => {
       element.style.display = 'block';
-    })
+    });
   }
   function passwordBlur() {
     console.log('password blur');
     document.getElementById('lighting').className = 'hammer-container';
     document.getElementById('hammer').className = 'hammer-container';
+    Array.from(document.getElementsByClassName('normal-eye')).forEach(element => {
+      element.style.display = 'block';
+    });
+    Array.from(document.getElementsByClassName('xuanyun-eye')).forEach(element => {
+      element.style.display = 'none';
+    });
   }
 </script>
 <script src="./js/snow.js"></script>
